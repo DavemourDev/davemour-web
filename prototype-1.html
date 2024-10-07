@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selector de Temas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Roboto&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="public/css/main.css">
+
+</head>
+
+<body>
+
+    <!-- Cabecera -->
+    <header class="site-header">
+        <nav class="navbar">
+            <a href="#" class="logo">Mi Marca</a>
+            <ul class="nav-links">
+                <li><a href="#">Inicio</a></li>
+                <li><a href="#">Sobre mí</a></li>
+                <li><a href="#">Servicios</a></li>
+                <li><a href="#">Contacto</a></li>
+            </ul>
+            <div class="selectors">
+                <select id="theme-selector"></select>
+                <select id="font-selector"></select>
+                <select id="text-color-selector"></select>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Sección Principal -->
+    <main class="content">
+        <section class="intro">
+            <h1>Bienvenidos a Mi Marca Personal</h1>
+            <p>Explora cómo diferentes temas y tipografías pueden transformar la apariencia de tu sitio web.</p>
+        </section>
+
+        <!-- Ejemplo de Formulario -->
+        <section class="form-section">
+            <h2>Editor de temas</h2>
+            <form id="theme-form">
+                <h2>Crear o Modificar Tema de Color</h2>
+                <label for="theme-id">Identificador:</label>
+                <input type="text" id="theme-id" required>
+
+                <label for="theme-name">Nombre:</label>
+                <input type="text" id="theme-name" required>
+
+                <label for="theme-primary">Color Primario:</label>
+                <input type="color" id="theme-primary" value="#4A90E2">
+
+                <label for="theme-secondary">Color Secundario:</label>
+                <input type="color" id="theme-secondary" value="#7ED321">
+
+                <label for="theme-neutral">Color Neutro:</label>
+                <input type="color" id="theme-neutral" value="#F5F5F5">
+
+                <label for="theme-accent">Color de Acento:</label>
+                <input type="color" id="theme-accent" value="#F5A623">
+
+                <button type="submit">Guardar Tema</button>
+            </form>
+        </section>
+
+        <!-- Ejemplo de Tabla -->
+        <section class="table-section">
+            <h2>Tabla de Precios</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Servicio</th>
+                        <th>Descripción</th>
+                        <th>Precio</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Desarrollo Web</td>
+                        <td>Diseño y desarrollo de sitios web modernos y dinámicos</td>
+                        <td>$500</td>
+                    </tr>
+                    <tr>
+                        <td>Desarrollo Móvil</td>
+                        <td>Aplicaciones móviles nativas para iOS y Android</td>
+                        <td>$700</td>
+                    </tr>
+                    <tr>
+                        <td>Capacitación TIC</td>
+                        <td>Formación en nuevas tecnologías y uso de herramientas TIC</td>
+                        <td>$300</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Ejemplo de Lista -->
+        <section class="list-section">
+            <h2>Lista de Servicios</h2>
+            <ul>
+                <li>Desarrollo de aplicaciones web</li>
+                <li>Creación de videojuegos</li>
+                <li>Producción de contenido multimedia</li>
+                <li>Capacitación en tecnologías</li>
+            </ul>
+        </section>
+    </main>
+
+    <!-- Pie de Página -->
+    <footer class="site-footer">
+        <p>&copy; 2024 Mi Marca Personal. Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- Fondo de Pantalla -->
+    <div id="background">
+        <canvas></canvas>
+    </div>
+
+
+    <script src="public/js/main.js"></script>
+    <script src="public/js/bg-canvas.js"></script>
+
+</body>
+
+</html>
