@@ -1,6 +1,10 @@
 // import data from '../data/themes.json' assert { type: 'json' };
 
-const { readFile } = require("fs");
+const { readFile } = require("fs").promises;
+
+
+const dataDir = require('path').join(__dirname, '../data');
+
 
 const apiIndexAction = (req, res) => {
 
@@ -19,35 +23,33 @@ const apiIndexAction = (req, res) => {
     res.json({ message: 'API v1', name: personProxy.name, age: personProxy.age, email: personProxy.email, job: personProxy.job });
 }
 
-const getColorThemesAction = async (req, res) => {
+const getThemesAction = async (req, res) => {
 
-    const colorThemes = readFile('../data/themes.json', 'utf8');
-
-    res.json({
-        'color-themes': {
-            'theme-1': {
-                name: 'Theme 1',
-                colors: {
-                    primary: '#ff0000',
-                    secondary: '#00ff00',
-                    neutral: '#0000ff',
-                    accent: '#ffff00'
-                }
-            },
-            'theme-2': {
-                name: 'Theme 2',
-                colors: {
-                    primary: '#ff00ff',
-                    secondary: '#00ffff',
-                    neutral: '#000000',
-                    accent: '#ffffff'
-                }
-            }
-        }
-    });
+    const themes = await readFile(dataDir + '/themes.json', 'utf8').then(data => JSON.parse(data));
+    res.json(themes);
 };
+
+const putThemesAction = async (req, res) => {
+    const themes = await readFile(dataDir + '/themes.json', 'utf8').then(data => JSON.parse(data));
+
+    const themeChanges = req.body;
+
+    if (!themeChanges) {
+        res.status(400).json({ message: 'No changes provided' });
+        return;
+    }
+
+    const updatedThemes = {
+        'color-themes': { ...themes['color-themes'], ...(themeChanges['color-themes'] || {}) },
+        'font-themes': { ...themes['font-themes'], ...(themeChanges['font-themes'] || {}) },
+        'base-text': { ...themes['base-text'], ...(themeChanges['base-text'] || {}) }
+    };
+
+    res.json(updatedThemes);
+}
 
 module.exports = {
     apiIndexAction,
-    getColorThemesAction
+    getThemesAction,
+    putThemesAction
 };

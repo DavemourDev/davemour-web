@@ -1,5 +1,5 @@
 // Función para cargar y aplicar temas desde el JSON
-fetch('themes.json')
+fetch('/api/v1/themes')
     .then(response => response.json())
     .then(data => {
         const colorThemes = data['color-themes'];
@@ -78,17 +78,33 @@ document.getElementById('theme-form').addEventListener('submit', function (event
 
     // Crear objeto JSON con los datos del tema
     const themeData = {
-        [themeId]: {
-            name: themeName,
-            colors: {
-                primary: themePrimary,
-                secondary: themeSecondary,
-                neutral: themeNeutral,
-                accent: themeAccent
+        'color-themes': {
+            [themeId]: {
+                name: themeName,
+                colors: {
+                    primary: themePrimary,
+                    secondary: themeSecondary,
+                    neutral: themeNeutral,
+                    accent: themeAccent
+                }
             }
         }
     };
 
     // Mostrar alerta con el objeto JSON
-    alert(JSON.stringify(themeData, null, 2));
+    // alert(JSON.stringify(themeData, null, 2));
+
+    // Enviar los datos del tema al servidor
+    fetch('/api/v1/themes', {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(themeData)
+    })
+        .then(response => response.json())
+        .then(data => console.log(data))
+        .catch(error => console.error('Error al enviar los datos:', error));
+
+
 });
