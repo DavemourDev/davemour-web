@@ -1,0 +1,21 @@
+{
+  "name": "davemour-1",
+  "version": "1.0.0",
+  "description": "My personal website for showing to the outer world who I am and what I do.",
+  "main": "main.js",
+  "scripts": {
+    "start:dev": "nodemon main.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Davemour",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "express": "^4.21.0",
+    "nodemon": "^3.1.7"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.0"
+  }
+}

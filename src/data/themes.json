@@ -1,0 +1,93 @@
+{
+    "color-themes": {
+        "modern-friendly": {
+            "name": "Moderno y Amigable",
+            "colors": {
+                "primary": "#4A90E2",
+                "secondary": "#7ED321",
+                "neutral": "#F5F5F5",
+                "accent": "#F5A623"
+            }
+        },
+        "dynamic-tech": {
+            "name": "Dinamismo y Tecnología",
+            "colors": {
+                "primary": "#007AFF",
+                "secondary": "#FF9500",
+                "neutral": "#8E8E93",
+                "accent": "#34C759"
+            }
+        },
+        "professional-sophisticated": {
+            "name": "Profesional y Sofisticado",
+            "colors": {
+                "primary": "#2C3E50",
+                "secondary": "#1ABC9C",
+                "neutral": "#ECF0F1",
+                "accent": "#F39C12"
+            }
+        },
+        "creative-innovative": {
+            "name": "Innovador y Creativo",
+            "colors": {
+                "primary": "#9B59B6",
+                "secondary": "#3498DB",
+                "neutral": "#BDC3C7",
+                "accent": "#F1C40F"
+            }
+        },
+        "warm-friendly": {
+            "name": "Tonos Cálidos y Amables",
+            "colors": {
+                "primary": "#4A90E2",
+                "secondary": "#F76C5E",
+                "neutral": "#FFFFFF",
+                "accent": "#FF6347"
+            }
+        }
+    },
+    "font-themes": {
+        "modern-friendly": {
+            "name": "Moderno y Amigable",
+            "fonts": {
+                "heading": "Poppins",
+                "body": "Open Sans"
+            }
+        },
+        "professional-dynamic": {
+            "name": "Profesional y Dinámico",
+            "fonts": {
+                "heading": "Montserrat",
+                "body": "Roboto"
+            }
+        },
+        "tech-sophisticated": {
+            "name": "Tecnológico y Sofisticado",
+            "fonts": {
+                "heading": "IBM Plex Sans",
+                "body": "Source Sans Pro"
+            }
+        },
+        "creative-versatile": {
+            "name": "Creativo y Versátil",
+            "fonts": {
+                "heading": "Playfair Display",
+                "body": "Nunito"
+            }
+        }
+    },
+    "base-text": {
+        "soft-black": {
+            "name": "Negro Suave",
+            "color": "#212121"
+        },
+        "dark-gray": {
+            "name": "Gris Oscuro",
+            "color": "#333333"
+        },
+        "neutral-gray": {
+            "name": "Gris Neutro",
+            "color": "#4D4D4D"
+        }
+    }
+}
