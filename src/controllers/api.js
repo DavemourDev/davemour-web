@@ -1,32 +1,85 @@
 // import data from '../data/themes.json' assert { type: 'json' };
 
 const { readFile } = require("fs").promises;
-
+const { query } = require('../database.js');
+const { head } = require("../routes/index.js");
 
 const dataDir = require('path').join(__dirname, '../data');
 
 
-const apiIndexAction = (req, res) => {
+async function getFontThemesData() {
+    const result = await query('SELECT * FROM font_themes');
 
-    const person = {
-        name: 'John Doe',
-        age: 25,
-        email: 'jdoe@m.com'
-    };
+    const fontThemes = {};
 
-    const personProxy = new Proxy(person, {
-        get(target, prop) {
-            return prop in target ? target[prop] : 'Property does not exist';
-        }
+    result.results.forEach(row => {
+        fontThemes[row.theme_id] = {
+            name: row.name,
+            fonts: {
+                heading: row.heading_font,
+                body: row.body_font
+            }
+        };
     });
 
-    res.json({ message: 'API v1', name: personProxy.name, age: personProxy.age, email: personProxy.email, job: personProxy.job });
+    return fontThemes;
+}
+
+async function getColorThemesData() {
+    const result = await query('SELECT * FROM color_themes');
+
+    const colorThemes = {};
+
+    result.results.forEach(row => {
+        colorThemes[row.theme_id] = {
+            name: row.name,
+            colors: {
+                primary: row.primary_color,
+                secondary: row.secondary_color,
+                neutral: row.neutral_color,
+                accent: row.accent_color
+            }
+        };
+    });
+
+    return colorThemes;
+}
+
+async function getBaseTextData() {
+    const result = await query('SELECT * FROM base_text');
+
+    const baseTextColors = {};
+
+    result.results.forEach(row => {
+        baseTextColors[row.text_id] = {
+            name: row.name,
+            color: row.color
+        };
+    });
+
+    return baseTextColors;
+}
+
+const apiIndexAction = (req, res) => {
+    const time = new Date().toLocaleTimeString();
+    res.json({ message: 'API v1', time });
 }
 
 const getThemesAction = async (req, res) => {
 
-    const themes = await readFile(dataDir + '/themes.json', 'utf8').then(data => JSON.parse(data));
-    res.json(themes);
+    const fontThemes = await getFontThemesData();
+    const colorThemes = await getColorThemesData();
+    const baseText = await getBaseTextData();
+
+    const responseData = {
+        'font-themes': fontThemes,
+        'color-themes': colorThemes,
+        'base-text': baseText
+    }
+
+    res.json(responseData);
+
+    // res.json(themes);
 };
 
 const putThemesAction = async (req, res) => {
