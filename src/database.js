@@ -17,10 +17,19 @@ const query = async (sqlQuery) => {
         return {
             query: result.command,
             results: result.rows,
-            resultCount: result.rowCount
+            resultCount: result.rowCount,
+            success: true,
+            message: 'Query successful'
         };
     }).catch(error => {
-        console.error('Error connecting to the database:', error);
+        return {
+            query: result.command,
+            results: [],
+            resultCount: 0,
+            success: false,
+            message: error.message
+        };
+
     }).finally(() => {
         client.end();
     });
