@@ -8,6 +8,8 @@ const router = express.Router({
     strict: false
 });
 
+// "start:dev": "nodemon --watch \"./**\" --ext \"js\" --exec \"node --env-file=.env main.js\"",
+
 router.get('/', indexPageAction);
 router.get('/prototype', prototypePageAction);
 

@@ -12,27 +12,25 @@ const query = async (sqlQuery) => {
 
     const client = new Client(clientConfig);
 
-    return client.connect().then(async () => {
-        const result = await client.query(sqlQuery);
-        return {
+    // console.log({ clientConfig });
+
+    return client.connect()
+        .then(() => client.query(sqlQuery))
+        .then(result => ({
             query: result.command,
             results: result.rows,
             resultCount: result.rowCount,
             success: true,
             message: 'Query successful'
-        };
-    }).catch(error => {
-        return {
-            query: result.command,
+        })).catch(error => ({
+            query: 'ERROR',
             results: [],
             resultCount: 0,
             success: false,
             message: error.message
-        };
-
-    }).finally(() => {
-        client.end();
-    });
+        })).finally(() => {
+            client.end();
+        });
 }
 
 module.exports = {

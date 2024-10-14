@@ -12,6 +12,7 @@ async function getFontThemesData() {
     const fontThemes = {};
 
     if (!result.success) {
+        console.error(result.message)
         return null;
     }
 
@@ -32,6 +33,7 @@ async function getColorThemesData() {
     const result = await query('SELECT * FROM color_themes');
 
     if (!result.success) {
+        // console.error(result.message)
         return null;
     }
 
@@ -56,6 +58,7 @@ async function getBaseTextData() {
     const result = await query('SELECT * FROM base_text');
 
     if (!result.success) {
+        console.error(result.message)
         return null;
     }
 
@@ -72,8 +75,18 @@ async function getBaseTextData() {
 }
 
 const apiIndexAction = (req, res) => {
-    const time = new Date().toLocaleTimeString();
-    res.json({ message: 'API v1', time });
+    const curDate = new Date();
+    const time = curDate.toLocaleTimeString();
+    const date = curDate.toLocaleDateString();
+
+    const jsonOutput = {
+        message: 'Davemour API V1',
+        version: 'v1.0',
+        date,
+        time
+    };
+
+    res.json(jsonOutput);
 }
 
 const getThemesAction = async (req, res) => {
