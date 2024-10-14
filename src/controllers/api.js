@@ -2,9 +2,9 @@
 
 const { readFile } = require("fs").promises;
 const { query } = require('../database.js');
+const { logger } = require("../logger.js");
 
 const dataDir = require('path').join(__dirname, '../data');
-
 
 async function getFontThemesData() {
     const result = await query('SELECT * FROM font_themes');
@@ -15,6 +15,8 @@ async function getFontThemesData() {
         console.error(result.message)
         return null;
     }
+
+    logger.info('Font themes data accessed');
 
     result.results.forEach(row => {
         fontThemes[row.theme_id] = {
@@ -31,12 +33,12 @@ async function getFontThemesData() {
 
 async function getColorThemesData() {
     const result = await query('SELECT * FROM color_themes');
-
     if (!result.success) {
         // console.error(result.message)
         return null;
     }
 
+    logger.info('Color themes data accessed');
     const colorThemes = {};
 
     result.results.forEach(row => {
@@ -62,6 +64,7 @@ async function getBaseTextData() {
         return null;
     }
 
+    logger.info('Base text data accessed');
     const baseTextColors = {};
 
     result.results.forEach(row => {
@@ -86,6 +89,7 @@ const apiIndexAction = (req, res) => {
         time
     };
 
+    logger.info('API index accessed');
     res.json(jsonOutput);
 }
 
@@ -101,9 +105,9 @@ const getThemesAction = async (req, res) => {
         'base-text': baseText
     }
 
-    res.json(responseData);
+    logger.info('Themes data accessed');
 
-    // res.json(themes);
+    res.json(responseData);
 };
 
 const putThemesAction = async (req, res) => {
@@ -112,9 +116,12 @@ const putThemesAction = async (req, res) => {
     const themeChanges = req.body;
 
     if (!themeChanges) {
+        logger.error('Themes data update failed: No changes provided');
         res.status(400).json({ message: 'No changes provided' });
         return;
     }
+
+    logger.info('Themes data updated');
 
     const updatedThemes = {
         'color-themes': { ...themes['color-themes'], ...(themeChanges['color-themes'] || {}) },
