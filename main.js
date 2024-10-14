@@ -1,6 +1,6 @@
+require('dotenv').config();
 const express = require('express');
-const path = require('node:path')
-const { fileURLToPath } = require('node:url');
+const path = require('node:path');
 const router = require('./src/routes/index.js');
 
 const app = express();

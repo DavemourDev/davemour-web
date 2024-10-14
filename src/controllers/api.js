@@ -2,7 +2,6 @@
 
 const { readFile } = require("fs").promises;
 const { query } = require('../database.js');
-const { head } = require("../routes/index.js");
 
 const dataDir = require('path').join(__dirname, '../data');
 
@@ -11,6 +10,11 @@ async function getFontThemesData() {
     const result = await query('SELECT * FROM font_themes');
 
     const fontThemes = {};
+
+    if (!result.success) {
+        console.error(result.message)
+        return null;
+    }
 
     result.results.forEach(row => {
         fontThemes[row.theme_id] = {
@@ -27,6 +31,11 @@ async function getFontThemesData() {
 
 async function getColorThemesData() {
     const result = await query('SELECT * FROM color_themes');
+
+    if (!result.success) {
+        // console.error(result.message)
+        return null;
+    }
 
     const colorThemes = {};
 
@@ -48,6 +57,11 @@ async function getColorThemesData() {
 async function getBaseTextData() {
     const result = await query('SELECT * FROM base_text');
 
+    if (!result.success) {
+        console.error(result.message)
+        return null;
+    }
+
     const baseTextColors = {};
 
     result.results.forEach(row => {
@@ -61,8 +75,18 @@ async function getBaseTextData() {
 }
 
 const apiIndexAction = (req, res) => {
-    const time = new Date().toLocaleTimeString();
-    res.json({ message: 'API v1', time });
+    const curDate = new Date();
+    const time = curDate.toLocaleTimeString();
+    const date = curDate.toLocaleDateString();
+
+    const jsonOutput = {
+        message: 'Davemour API V1',
+        version: 'v1.0',
+        date,
+        time
+    };
+
+    res.json(jsonOutput);
 }
 
 const getThemesAction = async (req, res) => {
