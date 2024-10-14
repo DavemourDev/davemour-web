@@ -3,30 +3,12 @@ services:
     image: postgres:latest
     container_name: postgres-db
     environment:
-      POSTGRES_USER: davemour
-      POSTGRES_PASSWORD: p4ssw0rd
-      POSTGRES_DB: davemour-web
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
     volumes:
       - db_data:/var/lib/postgresql/data
     ports:
       - "5432:5432"
-
-  node:
-    build:
-      context: .
-      dockerfile: ./docker/node/Dockerfile
-    container_name: node-app
-    working_dir: /usr/src/app
-    volumes:
-      - ./:/usr/src/app
-      - /usr/src/app/node_modules
-    ports:
-      - "3000:3000"
-    environment:
-      - NODE_ENV=development
-    command: npm run start:dev
-    depends_on:
-      - db
-
 volumes:
   db_data:
