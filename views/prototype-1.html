@@ -15,7 +15,7 @@
 
     <!-- Cabecera -->
     <header class="site-header">
-        <nav class="navbar">
+        <nav class="page-navigation">
             <a href="#" class="logo">Mi Marca</a>
             <ul class="nav-links">
                 <li><a href="#">Inicio</a></li>
@@ -23,88 +23,145 @@
                 <li><a href="#">Servicios</a></li>
                 <li><a href="#">Contacto</a></li>
             </ul>
-            <div class="selectors">
-                <select id="theme-selector"></select>
-                <select id="font-selector"></select>
-                <select id="text-color-selector"></select>
-            </div>
+
         </nav>
     </header>
 
     <!-- Sección Principal -->
     <main class="content">
-        <section class="intro">
-            <h1>Bienvenidos a Mi Marca Personal</h1>
-            <p>Explora cómo diferentes temas y tipografías pueden transformar la apariencia de tu sitio web.</p>
-        </section>
+
+        <div class="panel">
+
+
+            <section class="intro">
+                <h1>Bienvenidos a Mi Marca Personal</h1>
+                <p>Explora cómo diferentes temas y tipografías pueden transformar la apariencia de tu sitio web.</p>
+            </section>
+
+
+            <div class="selectors">
+                <div class="row gap-1">
+                    <div class="form-field selector">
+                        <label for="theme-selector">Tema de colores</label>
+                        <select id="theme-selector"></select>
+                    </div>
+
+                    <div class="form-field selector">
+                        <label for="font-selector">Tema de tipografías</label>
+                        <select id="font-selector"></select>
+                    </div>
+
+                    <div class="form-field selector">
+                        <label for="text-color-selector">Color texto base</label>
+                        <select id="text-color-selector"></select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
 
         <!-- Ejemplo de Formulario -->
         <section class="form-section">
-            <h2>Editor de temas</h2>
-            <form id="theme-form">
-                <h2>Crear o Modificar Tema de Color</h2>
-                <label for="theme-id">Identificador:</label>
-                <input type="text" id="theme-id" required>
 
-                <label for="theme-name">Nombre:</label>
-                <input type="text" id="theme-name" required>
+            <div class="panel">
 
-                <label for="theme-primary">Color Primario:</label>
-                <input type="color" id="theme-primary" value="#4A90E2">
 
-                <label for="theme-secondary">Color Secundario:</label>
-                <input type="color" id="theme-secondary" value="#7ED321">
 
-                <label for="theme-neutral">Color Neutro:</label>
-                <input type="color" id="theme-neutral" value="#F5F5F5">
+                <details>
 
-                <label for="theme-accent">Color de Acento:</label>
-                <input type="color" id="theme-accent" value="#F5A623">
+                    <summary class="heading-2">Editor de temas</summary>
 
-                <button type="submit">Guardar Tema</button>
-            </form>
+                    <form id="theme-form">
+                        <h2>Crear o Modificar Tema de Color</h2>
+
+                        <div class="form-field text-field">
+                            <label for="theme-id">Identificador</label>
+                            <input type="text" id="theme-id" required>
+                        </div>
+
+                        <div class="form-field text-field">
+                            <label for="theme-name">Nombre</label>
+                            <input type="text" id="theme-name" required>
+                        </div>
+
+
+                        <div class="row gap-1">
+
+                            <div class="form-field color-picker">
+                                <label for="theme-primary">Color Primario</label>
+                                <input type="color" id="theme-primary" value="#4A90E2">
+                            </div>
+
+                            <div class="form-field color-picker">
+                                <label for="theme-secondary">Color Secundario</label>
+                                <input type="color" id="theme-secondary" value="#7ED321">
+                            </div>
+
+                            <div class="form-field color-picker">
+                                <label for="theme-neutral">Color Neutro</label>
+                                <input type="color" id="theme-neutral" value="#F5F5F5">
+                            </div>
+
+                            <div class="form-field color-picker">
+                                <label for="theme-accent">Color de Acento</label>
+                                <input type="color" id="theme-accent" value="#F5A623">
+                            </div>
+                        </div>
+                        <div class="row gap-1">
+                            <button class="button primary" type="submit">Guardar Tema</button>
+                            <button class="button primary" type="button">Aplicar Tema</button>
+                        </div>
+                    </form>
+                </details>
+            </div>
         </section>
 
         <!-- Ejemplo de Tabla -->
         <section class="table-section">
-            <h2>Tabla de Precios</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Servicio</th>
-                        <th>Descripción</th>
-                        <th>Precio</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Desarrollo Web</td>
-                        <td>Diseño y desarrollo de sitios web modernos y dinámicos</td>
-                        <td>$500</td>
-                    </tr>
-                    <tr>
-                        <td>Desarrollo Móvil</td>
-                        <td>Aplicaciones móviles nativas para iOS y Android</td>
-                        <td>$700</td>
-                    </tr>
-                    <tr>
-                        <td>Capacitación TIC</td>
-                        <td>Formación en nuevas tecnologías y uso de herramientas TIC</td>
-                        <td>$300</td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="panel">
+
+                <h2>Tabla de Precios</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Servicio</th>
+                            <th>Descripción</th>
+                            <th>Precio</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Desarrollo Web</td>
+                            <td>Diseño y desarrollo de sitios web modernos y dinámicos</td>
+                            <td>$500</td>
+                        </tr>
+                        <tr>
+                            <td>Desarrollo Móvil</td>
+                            <td>Aplicaciones móviles nativas para iOS y Android</td>
+                            <td>$700</td>
+                        </tr>
+                        <tr>
+                            <td>Capacitación TIC</td>
+                            <td>Formación en nuevas tecnologías y uso de herramientas TIC</td>
+                            <td>$300</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </section>
 
         <!-- Ejemplo de Lista -->
         <section class="list-section">
-            <h2>Lista de Servicios</h2>
-            <ul>
-                <li>Desarrollo de aplicaciones web</li>
-                <li>Creación de videojuegos</li>
-                <li>Producción de contenido multimedia</li>
-                <li>Capacitación en tecnologías</li>
-            </ul>
+            <div class="panel">
+
+                <h2>Lista de Servicios</h2>
+                <ul>
+                    <li>Desarrollo de aplicaciones web</li>
+                    <li>Creación de videojuegos</li>
+                    <li>Producción de contenido multimedia</li>
+                    <li>Capacitación en tecnologías</li>
+                </ul>
+            </div>
         </section>
     </main>
 

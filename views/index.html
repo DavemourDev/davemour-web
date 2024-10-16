@@ -1,43 +1,118 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Davemour - Sitio Web Personal</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="/css/main.css">
 </head>
 
 <body>
   <div class="container">
+    <nav class="page-navigation2">
+      <h1 class="main-title">Davemour</h1>
+      <ul class="nav-links">
+        <li><a href="#introduction">Introducción</a></li>
+        <li class="separator-line"></li>
+        <li><a href="#career">Carrera profesional</a></li>
+        <li class="separator-line"></li>
+        <li><a href="#projects">Proyectos</a></li>
+        <li class="separator-line"></li>
+        <li><a href="#contact">Contacto</a></li>
+      </ul>
+    </nav>
     <main class="main">
-      <section id="introduction">
-        <h1>Welcome to My Personal Website</h1>
-        <p>Hi, I'm [Your Name], a passionate developer and tech enthusiast.</p>
+
+
+      <section class="page-section" id="introduction">
+        <p class="text-color-neutral">Hola, mi nombre es David y soy un Desarrollador Web apasionado de las Nuevas
+          Tecnologías.</p>
+        <p class="text-color-neutral">Disfruto creando y aprendiendo, así como enseñando. Me gusta seguir encontrando
+          retos y oportunidades para seguir creciendo.</p>
       </section>
 
-      <section id="career">
-        <h2>About My Career</h2>
-        <p>I have [X] years of experience in [Your Field]. I specialize in [Your Specialization].</p>
+      <section class="page-section" id="career">
+        <h2>Mi carrera profesional</h2>
+        <article>
+          <h3>Desarrollador Web</h3>
+          <p>I have a degree in Computer Science from the University of [Your University].</p>
+          <ul>
+            <li>Javascript / Typescript and some frameworks, libraries and environments such NodeJS, Angular, Next.js,
+              React, etc.</li>
+          </ul>
+        </article>
+        <article>
+          <h3>Formador / Capacitador en Tecnologías de la Información y la Comunicación</h3>
+          <p>He trabajado como Formador en TIC durante más de 3 años, durante los que he podido enseñar a mucha gente
+            sobre nuevas tecnologías y a despertarles interés en ellas.</p>
+          <p>Los cursos que he impartido comprenden, entre otras, las siguientes temáticas:</p>
+          <ul>
+            <li>Introducción a la Informática y a Internet.</li>
+            <li>Ofimática básica, media y avanzada (equiparable a los niveles de la acreditación ACTIC).</li>
+            <li>Introducción a la Programación, a la edición de imagen y video, para niños.</li>
+            <li>Introducción a la Programación Web y a la Creación de Páginas Web y Elementos Multimedia.</li>
+          </ul>
+        </article>
+        <p>Para más información, puedes consultar mi <a href="url-pdf-cv">Currículum Vitae</a>.</p>
       </section>
 
-      <section id="projects">
-        <h2>Projects</h2>
+      <section class="page-section" id="projects">
+        <h2>Some of my Projects</h2>
         <ul>
           <li><a href="[Project1Link]">Project 1</a> - Description of project 1.</li>
           <li><a href="[Project2Link]">Project 2</a> - Description of project 2.</li>
           <li><a href="[Project3Link]">Project 3</a> - Description of project 3.</li>
         </ul>
       </section>
+
+      <section class="page-section" id="contact">
+        <div class="panel">
+
+          <h2>¡Contáctame!</h2>
+          <form class="contact-form" action="[YourFormEndpoint]" method="post">
+            <div class="form-field text-field">
+              <label for="name">Tu nombre</label>
+              <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-field text-field">
+              <label for="email">Tu correo electrónico</label>
+              <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-field text-field">
+              <label for="message">Mensaje</label>
+              <textarea rows="4" cols="40" id="message" name="message" required></textarea>
+            </div>
+            <button class="button primary" type="submit">Send</button>
+          </form>
+          <p>Si lo prefieres, puedes enviarme un correo electrónico a: <a
+              href="mailto:dmu029018@gmail.com">dmu029018@gmail.com</a></p>
+          <p>O puedes encontrarme en las siguientes redes sociales:</p>
+          <ul class="social-link-list">
+            <li><a href="[SocialMediaLink1]"><i class="fa-brands fa-instagram"></i> </a></li>
+            <li><a href="[SocialMediaLink2]"><i class="fa-brands fa-linkedin"></i></a></li>
+            <li><a href="[SocialMediaLink3]"><i class="fa-brands fa-github"></i></a></li>
+          </ul>
+        </div>
+
+
+      </section>
     </main>
 
   </div>
 
   <div id="background">
-    <canvas></canvas>
+    <video autoplay loop muted poster="https://assets.codepen.io/6093409/river.jpg">
+      <source src="https://assets.codepen.io/6093409/river.mp4" type="video/mp4">
+    </video>
+    <!-- <canvas></canvas> -->
   </div>
 
-  <script src="/js/bg-canvas.js"></script>
+  <!-- <script src="/js/bg-canvas.js"></script> -->
 
 </body>
 
