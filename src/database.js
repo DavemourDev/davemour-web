@@ -8,22 +8,20 @@ const clientConfig = {
     port: process.env.DB_PORT,
 };
 
-const query = async (sqlQuery) => {
-
+const query = async (sqlQuery, params = []) => {
     const client = new Client(clientConfig);
-
-    // console.log({ clientConfig });
-
     return client.connect()
-        .then(() => client.query(sqlQuery))
+        .then(() => client.query(sqlQuery, params))
         .then(result => ({
             query: result.command,
+            statement: sqlQuery,
             results: result.rows,
             resultCount: result.rowCount,
             success: true,
             message: 'Query successful'
         })).catch(error => ({
             query: 'ERROR',
+            statement: sqlQuery,
             results: [],
             resultCount: 0,
             success: false,

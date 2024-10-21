@@ -63,3 +63,38 @@ VALUES (
         'IBM Plex Sans',
         'Source Sans Pro'
     );
+
+INSERT INTO
+    page_themes (
+        theme_id,
+        name,
+        text_color,
+        primary_color,
+        secondary_color,
+        neutral_color,
+        accent_color,
+        heading_font,
+        body_font
+    )
+VALUES (
+        1,
+        'Theme Name',
+        '#000000',
+        '#FF0000',
+        '#00FF00',
+        '#FFFFFF',
+        '#0000FF',
+        'Arial',
+        'Times New Roman'
+    )
+ON CONFLICT (theme_id) DO
+UPDATE
+SET
+    accent_color = excluded.accent_color,
+    body_font = excluded.body_font,
+    heading_font = excluded.heading_font,
+    name = excluded.name,
+    neutral_color = excluded.neutral_color,
+    primary_color = excluded.primary_color,
+    secondary_color = excluded.secondary_color,
+    text_color = excluded.text_color;

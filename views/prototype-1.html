@@ -42,18 +42,8 @@
             <div class="selectors">
                 <div class="row gap-1">
                     <div class="form-field selector">
-                        <label for="theme-selector">Tema de colores</label>
+                        <label for="theme-selector">Tema de página</label>
                         <select id="theme-selector"></select>
-                    </div>
-
-                    <div class="form-field selector">
-                        <label for="font-selector">Tema de tipografías</label>
-                        <select id="font-selector"></select>
-                    </div>
-
-                    <div class="form-field selector">
-                        <label for="text-color-selector">Color texto base</label>
-                        <select id="text-color-selector"></select>
                     </div>
                 </div>
             </div>
@@ -86,30 +76,60 @@
 
 
                         <div class="row gap-1">
-
                             <div class="form-field color-picker">
-                                <label for="theme-primary">Color Primario</label>
-                                <input type="color" id="theme-primary" value="#4A90E2">
+                                <label for="theme-color-text">Color de Texto</label>
+                                <input type="color" id="theme-color-text" name="theme-color-text" value="#333333">
+                            </div>
+                            <div class="form-field color-picker">
+                                <label for="theme-color-primary">Color Primario</label>
+                                <input type="color" id="theme-color-primary" name="theme-color-primary" value="#4A90E2">
                             </div>
 
                             <div class="form-field color-picker">
-                                <label for="theme-secondary">Color Secundario</label>
-                                <input type="color" id="theme-secondary" value="#7ED321">
+                                <label for="theme-color-secondary">Color Secundario</label>
+                                <input type="color" id="theme-color-secondary" name="theme-color-secondary"
+                                    value="#7ED321">
                             </div>
 
                             <div class="form-field color-picker">
-                                <label for="theme-neutral">Color Neutro</label>
-                                <input type="color" id="theme-neutral" value="#F5F5F5">
+                                <label for="theme-color-neutral">Color Neutro</label>
+                                <input type="color" id="theme-color-neutral" name="theme-color-neutral" value="#F5F5F5">
                             </div>
 
                             <div class="form-field color-picker">
-                                <label for="theme-accent">Color de Acento</label>
-                                <input type="color" id="theme-accent" value="#F5A623">
+                                <label for="theme-color-accent">Color de Acento</label>
+                                <input type="color" id="theme-color-accent" name="theme-color-accent" value="#F5A623">
                             </div>
+
+                        </div>
+                        <div class="row gap-1">
+                            <div class="form-field selector">
+                                <label for="theme-font-heading">Fuente de cabeceras y títulos</label>
+                                <select id="theme-font-heading" name="theme-font-heading">
+                                    <option value="" disabled>Seleccione una fuente</option>
+                                    <option value="Arial">Arial</option>
+                                    <option value="Garamond">Garamond</option>
+                                    <option value="Helvetica">Helvetica</option>
+                                    <option value="Poppins">Poppins</option>
+                                    <option value="Roboto">Roboto</option>
+                                </select>
+                            </div>
+                            <div class="form-field selector">
+                                <label for="theme-font-body">Fuente de cuerpo de texto</label>
+                                <select id="theme-font-body" name="theme-font-heading">
+                                    <option value="" disabled>Seleccione una fuente</option>
+                                    <option value="Arial">Arial</option>
+                                    <option value="Garamond">Garamond</option>
+                                    <option value="Helvetica">Helvetica</option>
+                                    <option value="Poppins">Poppins</option>
+                                    <option value="Roboto">Roboto</option>
+                                </select>
+                            </div>
+
                         </div>
                         <div class="row gap-1">
                             <button class="button primary" type="submit">Guardar Tema</button>
-                            <button class="button primary" type="button">Aplicar Tema</button>
+                            <button class="button primary" type="button" id="apply-theme-btn">Aplicar Tema</button>
                         </div>
                     </form>
                 </details>
@@ -176,8 +196,8 @@
     </div>
 
 
-    <script src="/js/main.js"></script>
-    <script src="/js/bg-canvas.js"></script>
+    <script src="/js/prototype.js"></script>
+    <!-- <script src="/js/bg-canvas.js"></script> -->
 
 </body>
 

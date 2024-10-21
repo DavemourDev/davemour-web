@@ -1,12 +1,5 @@
-// import data from '../data/themes.json' assert { type: 'json' };
-
-const { readFile } = require("fs").promises;
 const { logger } = require("../logger.js");
-const { getPageThemes } = require("../model/page-themes.js");
-
-
-const dataDir = require('path').join(__dirname, '../data');
-
+const { getPageThemes, upsertPageTheme } = require("../model/page-themes.js");
 
 const apiIndexAction = (req, res) => {
     const curDate = new Date();
@@ -33,33 +26,38 @@ const getThemesAction = async (req, res) => {
     res.json(pageThemes);
 };
 
-const putThemesAction = async (req, res) => {
-    const themes = await readFile(dataDir + '/themes.json', 'utf8').then(data => JSON.parse(data));
+const putThemeByIdAction = async (req, res) => {
+    const themeId = req.params.id;
 
-    const themeChanges = req.body;
+    if (!themeId) {
+        logger.error('Themes data update failed: No theme ID provided');
+        res.status(400).json({ message: 'No theme ID provided' });
+        return;
+    }
 
-    if (!themeChanges) {
+    const themeData = req.body;
+
+    console.log(themeData);
+
+    if (!themeData) {
         logger.error('Themes data update failed: No changes provided');
         res.status(400).json({ message: 'No changes provided' });
         return;
     }
 
-    logger.info('Themes data updated');
+    const result = await upsertPageTheme(themeId, themeData);
 
-    // TODO Edit
+    if (!result.success) {
+        logger.error('Themes data update failed: Database error');
+        res.status(500).json({ message: 'Database error' });
+        return;
+    }
 
-
-    const updatedThemes = {
-        'color-themes': { ...themes['color-themes'], ...(themeChanges['color-themes'] || {}) },
-        'font-themes': { ...themes['font-themes'], ...(themeChanges['font-themes'] || {}) },
-        'base-text': { ...themes['base-text'], ...(themeChanges['base-text'] || {}) }
-    };
-
-    res.json(updatedThemes);
+    res.json(result);
 }
 
 module.exports = {
     apiIndexAction,
     getThemesAction,
-    putThemesAction
+    putThemeByIdAction
 };
